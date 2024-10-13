@@ -11,6 +11,6 @@ namespace Project2WooxTravel.Entities
         public int CategoryId { get; set; }
         [StringLength(100)]
         public string CategoryName { get; set; }
-        public string CategoryStatus { get; set; }
+        public bool CategoryStatus { get; set; }
     }
 }
