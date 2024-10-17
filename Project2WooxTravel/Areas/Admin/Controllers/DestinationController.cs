@@ -8,6 +8,7 @@ using Project2WooxTravel.Entities;
 
 namespace Project2WooxTravel.Areas.Admin.Controllers
 {
+    [Authorize]
     public class DestinationController : Controller
     {
         // GET: Admin/Destination
