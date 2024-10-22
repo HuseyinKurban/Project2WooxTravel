@@ -691,6 +691,9 @@
     <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.min.js" />
     <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.slim.js" />
     <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\SendBox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\SendMessage.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -740,7 +743,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Message\" />
     <Folder Include="Areas\Admin\Views\Profilet\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Category\" />
