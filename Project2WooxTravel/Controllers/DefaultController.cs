@@ -34,7 +34,8 @@ namespace Project2WooxTravel.Controllers
         }
         public PartialViewResult PartialBanner()
         {
-            return PartialView();
+            var values = context.Destinations.OrderByDescending(x=>x.DestinationId).Take(4).ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult PartialCountry()
