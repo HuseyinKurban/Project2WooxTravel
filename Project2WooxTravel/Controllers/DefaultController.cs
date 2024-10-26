@@ -56,5 +56,6 @@ namespace Project2WooxTravel.Controllers
             var turdetay = context.Destinations.Where(x => x.DestinationId == id).ToList();
             return View(turdetay);
         }
+     
     }
 }
