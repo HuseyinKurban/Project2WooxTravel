@@ -1,4 +1,8 @@
-﻿@model List<Project2WooxTravel.Entities.Destination>
+﻿@using Project2WooxTravel.Entities
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Destination>
+
 <div class="visit-country">
     <div class="container">
         <div class="row">
@@ -15,43 +19,47 @@
                     <div class="row">
                         @foreach (var item in Model)
                         {
-
-
-                        <div class="col-lg-12">
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4 col-sm-5">
-                                        <div class="image">
-                                            <img src="@item.ImageUrl" alt="" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-7">
-                                        <div class="right-content">
-                                            <h4>@item.Country</h4>
-                                            <span>@item.City</span>
-                                            <div class="main-button">
-                                                <a href="#">Tur Detaylarını Gör</a>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-5">
+                                            <div class="image">
+                                                <img src="@item.ImageUrl" alt="">
                                             </div>
-                                            <p>@item.Description.Substring(0,500) <a href="#">Devamını Oku</a></p>
-                                            <ul class="info">
-                                                <li><i class="fa fa-clock"></i>@item.DayNight Gün - @(item.DayNight-1) Gece</li>
-                                                <li><i class="fa fa-turkish-lira"></i>@item.Price</li>
-                                                <li><i class="fa fa-car"></i>@item.Capacity Kişi</li>
-                                            </ul>
-                                            <div class="text-button">
-                                                <a href="about.html">Rehberi Görün<i class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                        <div class="col-lg-8 col-sm-7">
+                                            <div class="right-content">
+                                                <h4>@item.Country</h4>
+                                                <span>@item.City</span>
+                                                <div class="main-button">
+                                                    <a href="#">Tur Detaylarını Gör</a>
+                                                </div>
+                                                <p>@item.Description.Substring(0, 500) <a href="#">Devamını Oku</a></p>
+                                                <ul class="info">
+                                                    <li><i class="fa fa-clock"></i>@item.DayNight Gün - @(item.DayNight-1) Gece</li>
+                                                    <li><i class="fa fa-turkish-lira"></i>@item.Price</li>
+                                                    <li><i class="fa fa-car"></i>@item.Capacity Kişi</li>
+                                                </ul>
+                                                <div class="text-button">
+                                                    <a href="about.html">Rehberi Görün<i class="fa fa-arrow-right"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         }
-
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="pagination-wrapper text-center" style="margin-left:600px;">
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+       {
 
+           LiElementClasses = new List<string> { "page-link" }
+
+       })
         </div>
     </div>
 </div>

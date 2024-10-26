@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Project2WooxTravel.Context;
 using Project2WooxTravel.Entities;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Project2WooxTravel.Controllers
 {
     public class DefaultController : Controller
     {
         // GET: Default
-        TravelContext context=new TravelContext();
+        TravelContext context = new TravelContext();
 
         public ActionResult Index()
         {
@@ -34,13 +36,13 @@ namespace Project2WooxTravel.Controllers
         }
         public PartialViewResult PartialBanner()
         {
-            var values = context.Destinations.OrderByDescending(x=>x.DestinationId).Take(4).ToList();
+            var values = context.Destinations.OrderByDescending(x => x.DestinationId).Take(4).ToList();
             return PartialView(values);
         }
 
         public PartialViewResult PartialCountry()
         {
-            var values=context.Destinations.ToList();
+            var values = context.Destinations.ToList().ToPagedList(1, 3);
             return PartialView(values);
         }
 
