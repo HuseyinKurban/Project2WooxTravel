@@ -40,15 +40,21 @@ namespace Project2WooxTravel.Controllers
             return PartialView(values);
         }
 
-        public PartialViewResult PartialCountry()
+        public PartialViewResult PartialCountry(int p=1)
         {
-            var values = context.Destinations.ToList().ToPagedList(1, 3);
+            var values = context.Destinations.ToList().ToPagedList(p, 3);
             return PartialView(values);
         }
 
         public PartialViewResult PartialFooter()
         {
             return PartialView();
+        }
+
+        public ActionResult TurBilgileri(int id)
+        {
+            var turdetay = context.Destinations.Where(x => x.DestinationId == id).ToList();
+            return View(turdetay);
         }
     }
 }

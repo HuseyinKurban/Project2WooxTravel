@@ -1,0 +1,85 @@
+﻿@using Project2WooxTravel.Entities
+@model List<Destination>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Action("PartialHead", "Default")
+
+<body>
+
+    @Html.Action("PartialNavBar", "Default")
+
+    @foreach (var x in Model)
+    {
+        <div class="second-page-heading" style="background-image: url('@x.ImageUrl'); background-size: cover; background-position: center; height: 100vh; width: 100%; position: relative; z-index: 1;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Eğer burada içerik eklemek isterseniz buraya yazabilirsiniz -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="more-info reservation-info" style="position: relative; z-index: 2;">
+        <div class="container">
+            @foreach (var x in Model)
+            {
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="info-item">
+                            <i class="fa fa-clock"></i>
+                            <h4>Kaç Gün</h4>
+                            <a>@x.DayNight Gün - @(x.DayNight-1) Gece</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="info-item">
+                            <i class="fa fa-turkish-lira"></i>
+                            <h4>Fiyat</h4>
+                            <a href="#">@x.Price</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="info-item">
+                            <i class="fa fa-car"></i>
+                            <h4>Tur Kapasitesi</h4>
+                            <a href="#">@x.Capacity</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="reservation-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @foreach (var x in Model)
+                    {
+                        <form id="reservation-form" name="gs" role="search" action="#">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4><em>@x.Title</em></h4>
+                                    <b>@x.Description</b>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Action("PartialFooter", "Default")
+
+    @Html.Action("PartialScript", "Default")
+
+</body>
+</html>

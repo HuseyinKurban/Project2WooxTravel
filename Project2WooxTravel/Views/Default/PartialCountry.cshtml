@@ -32,17 +32,15 @@
                                                 <h4>@item.Country</h4>
                                                 <span>@item.City</span>
                                                 <div class="main-button">
-                                                    <a href="#">Tur Detaylarını Gör</a>
+                                                    <a href="/Default/TurBilgileri/@item.DestinationId">Tur Detaylarını Gör</a>
                                                 </div>
-                                                <p>@item.Description.Substring(0, 500) <a href="#">Devamını Oku</a></p>
+                                                <p>@item.Description.Substring(0, 500) <a href="/Default/TurBilgileri/@item.DestinationId">Devamını Oku</a></p>
                                                 <ul class="info">
                                                     <li><i class="fa fa-clock"></i>@item.DayNight Gün - @(item.DayNight-1) Gece</li>
                                                     <li><i class="fa fa-turkish-lira"></i>@item.Price</li>
                                                     <li><i class="fa fa-car"></i>@item.Capacity Kişi</li>
                                                 </ul>
-                                                <div class="text-button">
-                                                    <a href="about.html">Rehberi Görün<i class="fa fa-arrow-right"></i></a>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +52,7 @@
             </div>
         </div>
         <div class="pagination-wrapper text-center" style="margin-left:600px;">
-            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+            @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
        {
 
            LiElementClasses = new List<string> { "page-link" }
