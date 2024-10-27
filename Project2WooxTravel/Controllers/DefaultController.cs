@@ -20,6 +20,11 @@ namespace Project2WooxTravel.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
         public PartialViewResult PartialHead()
         {
             return PartialView();
@@ -56,6 +61,8 @@ namespace Project2WooxTravel.Controllers
             var turdetay = context.Destinations.Where(x => x.DestinationId == id).ToList();
             return View(turdetay);
         }
-     
+
+       
+
     }
 }
