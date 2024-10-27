@@ -747,6 +747,7 @@
     <Content Include="Views\Default\PartialCountry.cshtml" />
     <Content Include="Views\Default\PartialFooter.cshtml" />
     <Content Include="Views\Default\TurBilgileri.cshtml" />
+    <Content Include="Views\Default\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
