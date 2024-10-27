@@ -14,73 +14,203 @@
 
     @Html.Action("PartialNavBar", "Default")
 
-    @foreach (var x in Model)
-    {
-        <div class="second-page-heading" style="background-image: url('@x.ImageUrl'); background-size: cover; background-position: center; height: 100vh; width: 100%; position: relative; z-index: 1;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-
-    <div class="more-info reservation-info" style="position: relative; z-index: 2;">
-        <div class="container">
-            @foreach (var x in Model)
-            {
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="info-item">
-                            <i class="fa fa-clock"></i>
-                            <h4>Kaç Gün</h4>
-                            <a>@x.DayNight Gün - @(x.DayNight-1) Gece</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="info-item">
-                            <i class="fa fa-turkish-lira"></i>
-                            <h4>Fiyat</h4>
-                            <a href="#">@x.Price</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="info-item">
-                            <i class="fa fa-car"></i>
-                            <h4>Tur Kapasitesi</h4>
-                            <a href="#">@x.Capacity</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-
-    <div class="reservation-form">
+    <div class="about-main-content" style="margin-top:0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    @foreach (var x in Model)
-                    {
-                        <form id="reservation-form" name="gs" role="search" action="#">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h4><em>@x.Title</em></h4>
-                                    <b>@x.Description</b>
-                                </div>
-                            </div>
-                        </form>
-                    }
+                    <div class="content">
+                        <div class="blur-bg"></div>
+                        <h4>Biz Kimiz?</h4>
+                        <div class="line-dec"></div>
+                        <h2>Vizyonumuz</h2>
+                        <p>
+                            Misyonumuz, her bireyin unutulmaz deneyimler yaşamasını sağlamak ve gezmeyi sevdirmek.
+
+                            Hizmetlerimiz, özenle hazırlanmış turlar ve uzman rehberler eşliğinde, gezginlere kültürel zenginlikleri ve doğal güzellikleri en iyi şekilde sunmayı amaçlıyor.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <div class="cities-town">
+        <div class="container">
+            <div class="row">
+                <div class="slider-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>Türkiye'nin <em>Şehirleri &amp; Tarihi Yerleri</em></h2>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="owl-cites-town owl-carousel">
+                                @foreach (var x in Model)
+                                {
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <img src="@x.ImageUrl" alt="" style="height:200px;">
+                                            <h3>@x.City</h3>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weekly-offers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading text-center">
+                        <h2>En Güncel Tur Teklifleri</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-weekly-offers owl-carousel">
+                        @foreach (var x in Model)
+                        {
+
+
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="@x.ImageUrl" alt="" style="height:500px; width:600px">
+                                    <div class="text">
+                                        <h4>@x.Title<br><span><br /><i class="fa fa-users"></i> @x.Capacity Tur Kapasitesi</span></h4>
+                                        <h6>₺@x.Price</h6>
+                                        <div class="line-dec"></div>
+                                        <ul>
+                                            <li>Deal Includes:</li>
+                                            <li><i class="fa fa-taxi"></i> @x.DayNight Gün - @(x.DayNight-1) Gece > Günlük Gezi </li>
+                                            <li><i class="fa fa-plane"></i> Ulaşım Dahil</li>
+                                            <li><i class="fa fa-building"></i> Konaklama Dahil</li>
+                                        </ul>
+                                        <div class="main-button">
+                                            <a href="#" data-toggle="modal" data-target="#Modal1" >Rezervasyon Yap</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h3 class="modal-title">Hemen Şimdi Rezervasyon Yapın</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/Default/Rezervasyon">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Ad Soyad</label>
+                            <input type="text" class="form-control" name="Name" placeholder="Adınızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone"></i> Telefon Numarası</label>
+                            <input type="text" class="form-control" name="Phone" placeholder="Telefon numaranızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-users"></i> Kişi Sayısı</label>
+                            <input type="text" class="form-control" name="PersonCount" placeholder="Kişi sayısını girin">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-alt"></i> Tarih</label>
+                            <input type="date" class="form-control" name="ReservationDate">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-comments"></i> Açıklama</label>
+                            <textarea class="form-control" name="Description" rows="5" placeholder="Açıklamanızı girin" style="max-height:200px; min-height:70px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Rezervasyon Yap">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="more-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="left-image">
+                        <img src="/wooxtravel-1.0.0/assets/images/about-left-image.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Ülkemiz hakkında daha fazla bilgi edinin</h2>
+                        <p>Ülkemiz, tarihi zenginlikleri ve doğal güzellikleriyle dolu, her köşesi keşfedilmeyi bekleyen eşsiz bir cennet</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="info-item">
+                                <h4>@ViewBag.ToplamTur</h4>
+                                <span>Toplam Tur</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="info-item">
+                                <h4>@ViewBag.ToplamTurKapasitesi</h4>
+                                <span>Toplam Tur Kapasitesi</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="info-item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4>@ViewBag.GuncelTur</h4>
+                                        <span>En Güncel Tur</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4>@ViewBag.ToplamGun</h4>
+                                        <span>En Güncel Tur Gün Sayısı</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Ülkemizin benzersiz güzelliklerini keşfetmek için düzenlediğimiz turlar, her seferinde unutulmaz anılar biriktirmenizi sağlıyor. @ViewBag.GuncelTur ile tarih, kültür ve doğanın iç içe geçtiği bu muhteşem şehri keşfedin. En güncel tur programlarımızla, yeni deneyimlere yelken açmaya hazır olun!</p>
+                    <div class="main-button">
+                        <a href="/Default/Index">Daha Fazlasını Keşfet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     @Html.Action("PartialFooter", "Default")
 
     @Html.Action("PartialScript", "Default")
 
+    <script>
+        $(".option").click(function () {
+            $(".option").removeClass("active");
+            $(this).addClass("active");
+        });</script>
+
 </body>
+
 </html>

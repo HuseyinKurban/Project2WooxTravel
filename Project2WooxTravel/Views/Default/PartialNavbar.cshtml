@@ -23,10 +23,8 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="/Default/Index" class="active">Ana Sayfa</a></li>
-                        <li><a href="about.html">Hakkımızda</a></li>
-                        <li><a href="deals.html">Rotalar</a></li>
-                        <li><a href="reservation.html">Rezervasyon</a></li>
-                        <li><a href="reservation.html">Kayıt Ol</a></li>
+                        <li><a href="/Default/About">Hakkımızda</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#Modal1">Rezervasyon</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -37,3 +35,49 @@
         </div>
     </div>
 </header>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h3 class="modal-title">Hemen Şimdi Rezervasyon Yapın</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Default/Rezervasyon">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Ad Soyad</label>
+                        <input type="text" class="form-control" name="Name" placeholder="Adınızı girin">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Telefon Numarası</label>
+                        <input type="text" class="form-control" name="Phone" placeholder="Telefon numaranızı girin">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Kişi Sayısı</label>
+                        <input type="text" class="form-control" name="PersonCount" placeholder="Kişi sayısını girin">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-alt"></i> Tarih</label>
+                        <input type="date" class="form-control" name="ReservationDate">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-comments"></i> Açıklama</label>
+                        <textarea class="form-control" name="Description" rows="5" placeholder="Açıklamanızı girin" style="max-height:200px; min-height:70px;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Rezervasyon Yap">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

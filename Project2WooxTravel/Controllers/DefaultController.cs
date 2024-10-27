@@ -7,6 +7,7 @@ using Project2WooxTravel.Context;
 using Project2WooxTravel.Entities;
 using PagedList;
 using PagedList.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Project2WooxTravel.Controllers
 {
@@ -22,7 +23,12 @@ namespace Project2WooxTravel.Controllers
 
         public ActionResult About()
         {
-            return View();
+            var hakkımızda =  context.Destinations.OrderByDescending(x => x.DestinationId).Take(10).ToList();
+            ViewBag.ToplamTurKapasitesi = context.Destinations.Sum(x => x.Capacity);
+            ViewBag.ToplamTur = context.Destinations.Count();
+            ViewBag.GuncelTur = context.Destinations.OrderByDescending(x => x.DestinationId).Select(c => c.Title).FirstOrDefault();
+            ViewBag.ToplamGun = context.Destinations.OrderByDescending(x => x.DestinationId).Select(c => c.DayNight).FirstOrDefault();
+            return View(hakkımızda);
         }
 
         public PartialViewResult PartialHead()
@@ -45,7 +51,7 @@ namespace Project2WooxTravel.Controllers
             return PartialView(values);
         }
 
-        public PartialViewResult PartialCountry(int p=1)
+        public PartialViewResult PartialCountry(int p = 1)
         {
             var values = context.Destinations.ToList().ToPagedList(p, 3);
             return PartialView(values);
@@ -62,7 +68,19 @@ namespace Project2WooxTravel.Controllers
             return View(turdetay);
         }
 
-       
+        [HttpGet]
+        public ActionResult Rezervasyon()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Rezervasyon(Reservation rezerv)
+        {
+            context.Reservations.Add(rezerv);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }
