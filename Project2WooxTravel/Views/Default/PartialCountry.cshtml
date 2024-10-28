@@ -34,13 +34,19 @@
                                                 <div class="main-button">
                                                     <a href="/Default/TurBilgileri/@item.DestinationId">Tur Detaylarını Gör</a>
                                                 </div>
-                                                <p>@item.Description.Substring(0, 500) <a href="/Default/TurBilgileri/@item.DestinationId">Devamını Oku</a></p>
+                                                <p>
+                                                    @(item.Description.Length > 500
+        ? item.Description.Substring(0, 500) + "..."
+        : item.Description)
+                                                    <a href="/Default/TurBilgileri/@item.DestinationId">Devamını Oku</a>
+                                                </p>
+
                                                 <ul class="info">
                                                     <li><i class="fa fa-clock"></i>@item.DayNight Gün - @(item.DayNight-1) Gece</li>
                                                     <li><i class="fa fa-turkish-lira"></i>@item.Price</li>
                                                     <li><i class="fa fa-car"></i>@item.Capacity Kişi</li>
                                                 </ul>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +61,11 @@
             @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
        {
 
-           LiElementClasses = new List<string> { "page-link" }
+           LiElementClasses = new List<string> { "page-link" },
+           MaximumPageNumbersToDisplay=3,
+            DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+           DisplayLinkToLastPage = PagedListDisplayMode.Never
+
 
        })
         </div>

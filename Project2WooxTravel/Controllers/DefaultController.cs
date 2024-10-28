@@ -23,7 +23,7 @@ namespace Project2WooxTravel.Controllers
 
         public ActionResult About()
         {
-            var hakkımızda =  context.Destinations.OrderByDescending(x => x.DestinationId).Take(10).ToList();
+            var hakkımızda = context.Destinations.OrderByDescending(x => x.DestinationId).Take(10).ToList();
             ViewBag.ToplamTurKapasitesi = context.Destinations.Sum(x => x.Capacity);
             ViewBag.ToplamTur = context.Destinations.Count();
             ViewBag.GuncelTur = context.Destinations.OrderByDescending(x => x.DestinationId).Select(c => c.Title).FirstOrDefault();
@@ -65,7 +65,18 @@ namespace Project2WooxTravel.Controllers
         public ActionResult TurBilgileri(int id)
         {
             var turdetay = context.Destinations.Where(x => x.DestinationId == id).ToList();
-            return View(turdetay);
+            if (turdetay.Any())//boş değilse demek
+            {
+                return View(turdetay);
+            }
+            else
+            {
+
+                return RedirectToAction("Index");
+                
+            }
+
+
         }
 
         [HttpGet]
