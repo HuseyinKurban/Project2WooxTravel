@@ -14,13 +14,61 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="Modal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="Modal1Label">Rezervasyon Yapın</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Default/Rezervasyon">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Ad Soyad</label>
+                        <input type="text" class="form-control" name="Name" placeholder="Adınızı Giriniz" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Telefon Numarası</label>
+                        <input type="tel" class="form-control" name="Phone" placeholder="Telefon Numaranızı Giriniz" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Kişi Sayısı</label>
+                        <input type="number" class="form-control" name="PersonCount" placeholder="Kişi Sayısını Giriniz" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar-alt"></i> Tarih</label>
+                        <input type="date" class="form-control" name="ReservationDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-comments"></i> Açıklama</label>
+                        <textarea class="form-control" name="Description" rows="5" placeholder="Açıklamanızı Giriniz" style="max-height: 200px; min-height: 70px;"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Rezervasyon Yap">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Scriptler -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <p>
-                   © @DateTime.Now.Year <a href="/Default/Index">Hüseyin Kurban ||</a> Tüm hakları saklıdır.
-        
+                    © @DateTime.Now.Year <a href="/Default/Index">Hüseyin Kurban ||</a> Tüm hakları saklıdır.
+
                 </p>
             </div>
         </div>
