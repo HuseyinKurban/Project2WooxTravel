@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project2WooxTravel.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
     public class AdminLayoutController : Controller
     {
         // GET: Admin/AdminLayout/
+        TravelContext context = new TravelContext();
         public ActionResult Index()
         {
             return View();
@@ -26,7 +28,22 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
 
         public PartialViewResult PartialNavBar()
         {
-            return PartialView();
+            var a = Session["x"];
+            var email = context.Admins.Where(x => x.UserName == a).Select(y => y.Email).FirstOrDefault();
+            var values = context.Messages.Where(x => x.ReceiverMail == email && x.IsRead==false).ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PartialAdmin()
+        {
+            var a = Session["x"];
+            var admin = context.Admins.Where(x => x.UserName == a).ToList();
+            return PartialView(admin);
+        }
+        public PartialViewResult PartialBildirim()
+        {
+            var a=context.Destinations.OrderByDescending(x=>x.DestinationId).Take(4).ToList();
+            return PartialView(a);
         }
 
         public PartialViewResult PartialFooter()

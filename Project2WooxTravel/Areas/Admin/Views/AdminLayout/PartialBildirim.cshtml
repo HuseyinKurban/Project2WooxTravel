@@ -1,0 +1,43 @@
+﻿@model List<Project2WooxTravel.Entities.Destination>
+<li class="nav-item topbar-icon dropdown hidden-caret">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="notifDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">
+        <i class="fa fa-bell"></i>
+
+    </a>
+    <ul class="dropdown-menu notif-box animated fadeIn"
+        aria-labelledby="notifDropdown">
+        <li>
+            <div class="dropdown-title">
+              En Son Eklenen 4 Tur
+            </div>
+        </li>
+        <li>
+            <div class="notif-scroll scrollbar-outer">
+                <div class="notif-center">
+                    @foreach (var x in Model)
+                    {
+                        <a href="#">
+                            <div class="notif-icon notif-success">
+                                <i class="fa fa-bell"></i>
+                            </div>
+                            <div class="notif-content">
+                                <span class="block">
+                                    @x.Title
+                                </span>
+                                <span class="time">₺@x.Price Kapasite: @x.Capacity</span>
+                            </div>
+                        </a>
+
+                    }
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>

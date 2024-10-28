@@ -46,5 +46,44 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
             context.SaveChanges();
             return RedirectToAction("SendBox", "Message", new {area="Admin"});
         }
+
+        public ActionResult ChangeMessageStatusToTrue(int id)
+        {
+            var value = context.Messages.Find(id);
+            value.IsRead = true;
+            context.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+
+        public ActionResult ChangeMessageStatusToFalse(int id)
+        {
+            var value = context.Messages.Find(id);
+            value.IsRead = false;
+            context.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+
+        public ActionResult ChangeAllMessagesStatusToRead()
+        {
+            var a = Session["x"];
+            var admin = context.Admins
+                .Where(x => x.UserName == a)
+                .Select(y => y.Email)
+                .FirstOrDefault();
+
+
+            var okunmamismesaj = context.Messages
+                .Where(x => x.ReceiverMail == admin && x.IsRead == false)
+                .ToList();
+
+            foreach (var x in okunmamismesaj)
+            {
+                x.IsRead = true; 
+            }
+
+            context.SaveChanges(); 
+            return RedirectToAction("Inbox"); 
+        }
+
     }
 }

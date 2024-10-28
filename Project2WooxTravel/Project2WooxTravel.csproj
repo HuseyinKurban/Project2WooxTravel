@@ -701,6 +701,8 @@
     <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
     <Content Include="Areas\Admin\Views\Message\SendBox.cshtml" />
     <Content Include="Areas\Admin\Views\Message\SendMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialBildirim.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -752,7 +754,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Profilet\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
