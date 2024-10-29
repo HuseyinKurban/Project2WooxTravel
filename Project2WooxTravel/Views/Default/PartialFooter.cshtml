@@ -24,7 +24,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Default/Rezervasyon">
+            <form id="reservationForm" method="post" action="/Default/Rezervasyon" onsubmit="showSuccessAlert(event)">
                 <div class="modal-body">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Ad Soyad</label>
@@ -55,10 +55,24 @@
     </div>
 </div>
 
-<!-- Scriptler -->
 
+<!-- Scriptler -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function showSuccessAlert(event) {
+        // Form gönderimini durdur
+        event.preventDefault();
+
+        // Başarılı rezervasyon mesajını göster
+        swal("Başarılı!", "Rezervasyonunuz başarıyla alındı.", "success").then(() => {
+            // Formu sunucuya gönder
+            document.getElementById("reservationForm").submit();
+        });
+    }
+</script>
 
 
 

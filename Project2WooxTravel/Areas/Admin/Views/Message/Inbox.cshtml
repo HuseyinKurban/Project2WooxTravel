@@ -37,7 +37,8 @@
                                         <td>@item.Subject</td>
                                         <td>@item.SendDate.ToShortDateString()</td>
                                         <td>@(item.IsRead ? "Okundu" : "Okunmadı")</td>
-                                        <td><a href="#" class="btn btn-warning">Mesajı Aç</a></td>
+                                        <td><a href="javascript:void(0);" class="btn btn-warning" onclick="openMessageModal('@item.SenderMail', '@item.Subject', '@item.SendDate.ToShortDateString()', '@item.Content')">Mesajı Aç</a></td>
+
                                         <td>
                                             @if (item.IsRead == false)
                                             {
@@ -61,3 +62,49 @@
     </div>
 </div>
 
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Mesaj Detayı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <p><strong>Gönderici:</strong> <span id="modalSender"></span></p>
+                <p><strong>Konu:</strong> <span id="modalSubject"></span></p>
+                <p><strong>Tarih:</strong> <span id="modalDate"></span></p>
+                <p><strong>Mesaj:</strong></p>
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeModalButton">Kapat</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function openMessageModal(sender, subject, date, message) {
+        document.getElementById("modalSender").innerText = sender;
+        document.getElementById("modalSubject").innerText = subject;
+        document.getElementById("modalDate").innerText = date;
+        document.getElementById("modalMessage").innerText = message;
+
+        $('#messageModal').modal('show');
+    }
+
+    document.getElementById("closeModalButton").addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
+
+
+    // Modal kapatma işlemi
+    document.querySelector('[data-dismiss="modal"]').addEventListener("click", function () {
+        $('#messageModal').modal('hide');
+    });
+
+</script>

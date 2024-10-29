@@ -96,7 +96,7 @@
                                             <li><i class="fa fa-building"></i> Konaklama Dahil</li>
                                         </ul>
                                         <div class="main-button">
-                                            <a href="#" data-toggle="modal" data-target="#Modal1" >Rezervasyon Yap</a>
+                                            <a href="#" data-toggle="modal" data-target="#Modal1">Rezervasyon Yap</a>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/Default/Rezervasyon">
+                <form id="reservationForm" method="post" action="/Default/Rezervasyon" onsubmit="showSuccessAlert(event)">
                     <div class="modal-body">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Ad Soyad</label>
@@ -204,6 +204,20 @@
     @Html.Action("PartialFooter", "Default")
 
     @Html.Action("PartialScript", "Default")
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function showSuccessAlert(event) {
+            // Form gönderimini durdur
+            event.preventDefault();
+
+            // Başarılı rezervasyon mesajını göster
+            swal("Başarılı!", "Rezervasyonunuz başarıyla alındı.", "success").then(() => {
+                // Formu sunucuya gönder
+                document.getElementById("reservationForm").submit();
+            });
+        }
+    </script>
 
     <script>
         $(".option").click(function () {
