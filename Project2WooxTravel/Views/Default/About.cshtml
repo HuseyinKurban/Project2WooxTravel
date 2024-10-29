@@ -108,45 +108,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="Modal1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title">Hemen Şimdi Rezervasyon Yapın</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="reservationForm" method="post" action="/Default/Rezervasyon" onsubmit="showSuccessAlert(event)">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label><i class="fas fa-user"></i> Ad Soyad</label>
-                            <input type="text" class="form-control" name="Name" placeholder="Adınızı girin">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-phone"></i> Telefon Numarası</label>
-                            <input type="text" class="form-control" name="Phone" placeholder="Telefon numaranızı girin">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-users"></i> Kişi Sayısı</label>
-                            <input type="text" class="form-control" name="PersonCount" placeholder="Kişi sayısını girin">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-calendar-alt"></i> Tarih</label>
-                            <input type="date" class="form-control" name="ReservationDate">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-comments"></i> Açıklama</label>
-                            <textarea class="form-control" name="Description" rows="5" placeholder="Açıklamanızı girin" style="max-height:200px; min-height:70px;"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Rezervasyon Yap">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 
 
     <div class="more-about">
@@ -205,25 +167,8 @@
 
     @Html.Action("PartialScript", "Default")
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        function showSuccessAlert(event) {
-            // Form gönderimini durdur
-            event.preventDefault();
+  
 
-            // Başarılı rezervasyon mesajını göster
-            swal("Başarılı!", "Rezervasyonunuz başarıyla alındı.", "success").then(() => {
-                // Formu sunucuya gönder
-                document.getElementById("reservationForm").submit();
-            });
-        }
-    </script>
-
-    <script>
-        $(".option").click(function () {
-            $(".option").removeClass("active");
-            $(this).addClass("active");
-        });</script>
 
 </body>
 

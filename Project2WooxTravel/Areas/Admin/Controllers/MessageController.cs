@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json.Linq;
 using Project2WooxTravel.Context;
 using Project2WooxTravel.Entities;
 
@@ -31,6 +32,18 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
 
         public ActionResult SendMessage()
         {
+            
+            var adminuser = Session["x"]?.ToString();
+            var adminemail=context.Admins.Where(x => x.UserName == adminuser).Select(y => y.Email).FirstOrDefault();
+
+            List<SelectListItem> degerler=(from x in context.Admins.ToList()
+                                           where x.Email !=adminemail
+                                           select new SelectListItem
+                                           {
+                                               Text=x.Email,
+                                               Value=x.Email
+                                           }).ToList();
+            ViewBag.emaillistesi = degerler;
             return View();
         }
 
