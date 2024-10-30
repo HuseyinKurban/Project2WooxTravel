@@ -29,6 +29,7 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CreateDestination(Destination destination)
         {
+            destination.Eklenme = DateTime.Now;
             context.Destinations.Add(destination);
             context.SaveChanges();
             return RedirectToAction("DestinationList", "Destination", "Admin");
@@ -60,6 +61,7 @@ namespace Project2WooxTravel.Areas.Admin.Controllers
             value.Country=destination.Country;
             value.ImageUrl=destination.ImageUrl;
             value.Price=destination.Price;
+            value.Capacity=destination.Capacity;
             value.Title=destination.Title;
             context.SaveChanges();
             return RedirectToAction("DestinationList", "Destination", "Admin");
