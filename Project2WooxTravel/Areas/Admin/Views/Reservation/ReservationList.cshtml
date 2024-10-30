@@ -1,0 +1,92 @@
+﻿@model List<Project2WooxTravel.Entities.Reservation>
+@{
+    ViewBag.Title = "ReservationList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    string renk = "";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Rezervasyon İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            <div style="margin:5px;">
+                             
+                                @Html.TextBox("p", null, new { @class = "form-control", @placeholder = "Ad Soyad giriniz" ,style = "width: 400px;" })
+
+                                <input type="submit" value="Bul" class="btn btn-info" style="margin-top: 5px; margin-bottom:10px;" />
+                            </div>
+                        }
+
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Rezervasyon Id</th>
+                                    <th scope="col">Ad-Soyad</th>
+                                    <th scope="col">Telefon</th>
+                                    <th scope="col">Kişi Sayısı</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Açıklama</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">İşlemler</th>
+                                   
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if(item.Status==true)
+                                    {
+                                        renk = "badge bg-success";
+                }
+                                    else
+                                    {
+                                        renk = "badge  bg-danger";
+                }
+                                    <tr>
+                                        <td>@item.ReservationId</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.PersonCount</td>
+                                        <td>@item.ReservationDate.ToShortDateString()</td>
+
+                                        <td>
+                                            @(item.Description.Length>30 ? item.Description.Substring(0, 30) + "..."
+                                            : item.Description)
+                                        </td>
+                                        <td><span class="@renk" style="font-size:14px;">@(item.Status ? "Onaylı" : "Onay Bekliyor") </span></td>
+
+                                        <td>
+                                            @if (item.Status == false)
+                                            {
+                                                <a href="/Admin/Reservation/ReservationStatusTrue/@item.ReservationId" class="btn btn-info">Onayla</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Admin/Reservation/ReservationStatusFalse/@item.ReservationId" class="btn btn-dark">Onayı Kaldır</a>
+                                            }
+
+                                            <a href="/Admin/Reservation/DeleteReservation/@item.ReservationId" class="btn btn-danger">Sil</a>
+
+                                            <a href="/Admin/Reservation/UpdateReservation/@item.ReservationId" class="btn btn-success">Güncelle</a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -136,9 +136,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReservationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WidgetController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -173,6 +176,10 @@
     <Compile Include="Migrations\202410221744505_mig5.cs" />
     <Compile Include="Migrations\202410221744505_mig5.Designer.cs">
       <DependentUpon>202410221744505_mig5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410291952507_mig6.cs" />
+    <Compile Include="Migrations\202410291952507_mig6.Designer.cs">
+      <DependentUpon>202410291952507_mig6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -703,6 +710,12 @@
     <Content Include="Areas\Admin\Views\Message\SendMessage.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\PartialAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\AdminLayout\PartialBildirim.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CreateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\ReservationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\UpdateReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\Widget\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -798,6 +811,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410221744505_mig5.resx">
       <DependentUpon>202410221744505_mig5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410291952507_mig6.resx">
+      <DependentUpon>202410291952507_mig6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

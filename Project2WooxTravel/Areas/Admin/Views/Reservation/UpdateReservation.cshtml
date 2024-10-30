@@ -1,0 +1,49 @@
+﻿@model Project2WooxTravel.Entities.Reservation
+@{
+    ViewBag.Title = "UpdateReservation";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Rezervasyon İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            @Html.HiddenFor(x => x.ReservationId)
+                            <label>Ad Soyad</label>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            <br />
+                            <label>Telefon</label>
+                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                            <br />
+                            <label>Kişi Sayısı</label>
+                            @Html.TextBoxFor(x => x.PersonCount, new { @class = "form-control" })
+                            <br />
+                            <label>Rezervasyon Tarihi</label>
+                            @Html.TextBoxFor(x => x.ReservationDate, new { @class = "form-control" })
+                            <br />
+                            <label>Açıklama</label>
+                            @Html.TextAreaFor(x => x.Description, 5, 0, new { @class = "form-control" })
+                            <br />
+                            <label>Durumu</label>
+                            @Html.DropDownListFor(x => x.Status, new List<SelectListItem>
+   {
+       new SelectListItem { Text = "Aktif", Value = "true" },
+       new SelectListItem { Text = "Pasif", Value = "false" }
+   }, new { @class = "form-control" })
+                            <br  />
+                            <br />
+                            <button class="btn btn-primary">Güncelle</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

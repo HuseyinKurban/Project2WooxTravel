@@ -13,5 +13,6 @@ namespace Project2WooxTravel.Entities
         public int PersonCount { get; set; }
         public DateTime ReservationDate { get; set; }
         public string Description { get; set; }
+        public bool Status { get; set; }
     }
 }
